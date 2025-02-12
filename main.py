@@ -26,5 +26,10 @@ def count_characters(file_contents):    # function to count total number of char
 
     return character_counts
 
+def sort_on(character_counts):
+    return character_counts[char]
+
+
+
 main()
 
