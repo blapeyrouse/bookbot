@@ -31,16 +31,14 @@ def count_characters(file_contents):    # function to count total number of char
     return character_counts[character]
 
 
-def make_list_of_dicts(file_contents):
+def make_list_of_dicts(file_contents):    # function to convert the dictionary of character counts into a list of dictionaries
     letters = []
     character_counts = count_characters(file_contents)
     for k in count_characters(file_contents):
-        if k.isalpha():
+        if k.isalpha():    # check to make sure the key is part of the alphabet to filter out symbols, spaces, and numbers
             dicts_for_letters = {}
             dicts_for_letters[k] = character_counts[k]
-            letters.append(dicts_for_letters)
-    print("Heres LETTERS")
-    print(letters)
+            letters.append(dicts_for_letters)    # resets the dictionary each time and then appends each key/value pair to the list
     
     return letters
 
@@ -48,13 +46,7 @@ def make_list_of_dicts(file_contents):
 
     '''
 def make_report(file_contents):
-    print("First list print")
-    print(letters)
-    letters.sort(reverse=True)
-    print("Should be sorted")
-    print(letters)
-
-    return letters
+    
 
     '''
 
