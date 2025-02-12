@@ -4,7 +4,7 @@ def main():
     # print(file_contents)    
     print(count_words(file_contents))    # prints word count in main
     print(count_characters(file_contents))    # prints dictionary of characters, including spaces and symbols, and the number of times it appears
-
+    print(make_list_of_dicts(file_contents))
 
 def count_words(file_contents):    # function to count words
     count = 0
@@ -26,10 +26,38 @@ def count_characters(file_contents):    # function to count total number of char
 
     return character_counts
 
-def sort_on(character_counts):
-    return character_counts[char]
+
+# def sort_on(character_counts):
+    return character_counts[character]
+
+
+def make_list_of_dicts(file_contents):
+    letters = []
+    character_counts = count_characters(file_contents)
+    for k in count_characters(file_contents):
+        if k.isalpha():
+            dicts_for_letters = {}
+            dicts_for_letters[k] = character_counts[k]
+            letters.append(dicts_for_letters)
+    print("Heres LETTERS")
+    print(letters)
+    
+    return letters
+
+
+
+    '''
+def make_report(file_contents):
+    print("First list print")
+    print(letters)
+    letters.sort(reverse=True)
+    print("Should be sorted")
+    print(letters)
+
+    return letters
+
+    '''
 
 
 
 main()
-
