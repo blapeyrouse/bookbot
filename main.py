@@ -8,7 +8,7 @@ def main():    # need to figure out test cases
         print(f"--- End report ---")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-        
+
 
 
 def read_file(prompt="Enter the filepath"):    # let's me set a prompt for the input method below rather than printing a line before the input
@@ -18,23 +18,23 @@ def read_file(prompt="Enter the filepath"):    # let's me set a prompt for the i
             with open(path) as f:
                 return path, f.read()
         except FileNotFoundError:    # handle incorrect file names or wrong paths
-            prompt = "File not found. Please check the file path for errors or try the absolute file path"
+            prompt = "File not found. Please check the file path. For Linux shells, I've observed that the absolute path is needed while bash/zsh shells require the relative path"
         except Exception as e:    # handle other errors
             prompt = f"Error accessing file: {e}. Please try again"
-        
+
 
 
 def count_words(file_contents):    # function to count words
     count = 0
     words = file_contents.split()   # splits file_contents into a list of individual words
-    for word in words:  # iterates through each word and adds 1 to total count 
+    for word in words:  # iterates through each word and adds 1 to total count
         count += 1
 
     return count
 
 
-def count_characters(file_contents):    # function to count total number of characters and return them as a dictionary 
-    character_counts = {} 
+def count_characters(file_contents):    # function to count total number of characters and return them as a dictionary
+    character_counts = {}
     little_words = file_contents.lower()    # lowers the case of the file_contents string
     for character in little_words:    # moves through each character
         if character not in character_counts:    # if the character does not exist as a key in the dictionary, add it and set the value to 1
@@ -48,7 +48,7 @@ def count_characters(file_contents):    # function to count total number of char
 def sort_on(dict):    # defines which key to sort on
 
     return dict["num"]
-    
+
 
 def make_list_of_dicts(file_contents):    # function to convert the dictionary of character counts into a list of dictionaries
     letters = []
@@ -59,7 +59,7 @@ def make_list_of_dicts(file_contents):    # function to convert the dictionary o
                 "name":k, "num":character_counts[k]
             }
             letters.append(dicts_for_letters)    # resets the dictionary each time and then appends each key/value pair to the list
-    
+
     return letters
 
 
@@ -74,7 +74,7 @@ def make_report(file_contents):    # iterates through sorted list and adds a str
     sorted_list = sort_list(file_contents)
     for letter in sorted_list:
         report.append(f"The '{letter['name']}' character was found {letter['num']} times")
-    
+
     return "\n".join(report)    # returns each string on it's own line
 
 
