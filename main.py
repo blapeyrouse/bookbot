@@ -1,4 +1,4 @@
-def main():
+def main():    # need to figure out test cases
     try:
         path, file_contents = read_file()
         count = count_words(file_contents)
