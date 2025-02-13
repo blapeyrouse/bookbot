@@ -1,13 +1,27 @@
 def main():
-    print("Enter the filepath")
-    path = input()
-    with open(path) as f:   # opens specified path and reads the contents of the .txt file
-        file_contents = f.read()  
-    count = count_words(file_contents)
-    print(f"--- Begin report of {path} ---")
-    print(f"{count} words found in the document \n")
-    print(make_report(file_contents))
-    print(f"--- End report ---")
+    try:
+        path, file_contents = read_file()
+        count = count_words(file_contents)
+        print(f"--- Begin report of {path} ---")
+        print(f"{count} words found in the document \n")
+        print(make_report(file_contents))
+        print(f"--- End report ---")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        
+
+
+def read_file(prompt="Enter the filepath"):    # let's me set a prompt for the input method below rather than printing a line before the input
+    while True:    # loops and reprompts if an incorrect file path is given
+        try:
+            path = input(f"{prompt}: ")
+            with open(path) as f:
+                return path, f.read()
+        except FileNotFoundError:    # handle incorrect file names or wrong paths
+            prompt = "File not found. Please check the file path for errors or try the absolute file path"
+        except Exception as e:    # handle other errors
+            prompt = f"Error accessing file: {e}. Please try again"
+        
 
 
 def count_words(file_contents):    # function to count words
