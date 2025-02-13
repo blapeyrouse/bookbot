@@ -4,7 +4,8 @@ def main():
     print(count_words(file_contents))    # prints word count in main
     # print(count_characters(file_contents))    # prints dictionary of characters, including spaces and symbols, and the number of times it appears
     print(make_list_of_dicts(file_contents))
-    
+    print("NOW LETS SORT IT")
+    print(sort_list(file_contents))
 
 
 def count_words(file_contents):    # function to count words
