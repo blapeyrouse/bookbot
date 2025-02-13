@@ -1,5 +1,6 @@
 def main():
-    path = "books/frankenstein.txt"
+    print("Enter the filepath")
+    path = input()
     with open(path) as f:   # opens specified path and reads the contents of the .txt file
         file_contents = f.read()  
     count = count_words(file_contents)
