@@ -1,10 +1,11 @@
 def main():
     with open("books/frankenstein.txt") as f:   # opens specified path and reads the contents of the .txt file
-        file_contents = f.read()
-    # print(file_contents)    
+        file_contents = f.read()  
     print(count_words(file_contents))    # prints word count in main
-    print(count_characters(file_contents))    # prints dictionary of characters, including spaces and symbols, and the number of times it appears
+    # print(count_characters(file_contents))    # prints dictionary of characters, including spaces and symbols, and the number of times it appears
     print(make_list_of_dicts(file_contents))
+    
+
 
 def count_words(file_contents):    # function to count words
     count = 0
@@ -27,28 +28,34 @@ def count_characters(file_contents):    # function to count total number of char
     return character_counts
 
 
-# def sort_on(character_counts):
-    return character_counts[character]
-
+def sort_on(dict):
+    return dict["num"]
+    
 
 def make_list_of_dicts(file_contents):    # function to convert the dictionary of character counts into a list of dictionaries
     letters = []
     character_counts = count_characters(file_contents)
-    for k in count_characters(file_contents):
+    for k in character_counts:
         if k.isalpha():    # check to make sure the key is part of the alphabet to filter out symbols, spaces, and numbers
-            dicts_for_letters = {}
-            dicts_for_letters[k] = character_counts[k]
+            dicts_for_letters = {
+                "name":k, "num":character_counts[k]
+            }
             letters.append(dicts_for_letters)    # resets the dictionary each time and then appends each key/value pair to the list
     
     return letters
 
 
+def sort_list(file_contents):
+    list = make_list_of_dicts(file_contents)
+    list.sort(reverse=True, key=sort_on)
 
-    '''
-def make_report(file_contents):
+    return list
+
+
+
+
+# def make_report(file_contents):
     
-
-    '''
 
 
 
