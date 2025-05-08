@@ -3,4 +3,4 @@ asdsdfsdfsdfsdfsdfsdfsdfsdf
 
 def newFunction()
 	if x <0:asddsa
-		do this\asdnew
+		do this\asdnewnew
